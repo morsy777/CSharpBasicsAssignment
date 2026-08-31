@@ -17,7 +17,7 @@ class Program
 {
   static void Main()
   {
-    
+    RunValueVsReferenceDemo();
   }
 
   // ============ Part B ====================//
@@ -106,11 +106,30 @@ class Program
     Console.WriteLine(d);
   }
 
+  static void RunValueVsReferenceDemo()
+  {
+    Point p1 = new Point { X = 1, Y = 2 };
+    Point p2 = p1;
+    p2.X = 99;
+
+    // Struct is value type so when we assign value type
+    //  to another variable, a copy of the value is created
+    //  and the both variable are completely independent.
+    Console.WriteLine($"P1.X = {p1.X} || P2.X = {p2.X}");
 
 
 
 
-  
+
+
+
+
+
+  }
+
+
+
+
 }
 
 
