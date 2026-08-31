@@ -17,7 +17,43 @@ class Program
 {
   static void Main()
   {
-    RunValueVsReferenceDemo();
+    Order o1 = new Order
+    {
+      OrderId = 1,
+      CustomerName = "Mohamed Morsi",
+      Quantity = 3,
+      UnitPrice = 25.50m,
+      IsPaid = false,
+      DiscountPercent = 10.0,
+      ShippingCity = "Mansoura",
+      Priority = 'H',
+      ItemCode = 33333
+    };
+
+    o1.CalculateTotal();
+    
+    Order o2 = o1;
+    o2.IsPaid = false;
+
+    // When we assign o1 to o2, the both variable
+    // refer to the same Order (object) in the heap
+    o1.PrintSummary();
+    o2.PrintSummary();
+
+    object BoxOrder = o1;
+    Order o3 = (Order)BoxOrder;
+    Console.WriteLine($"Is O1 & O3 refer to the smae object: {object.ReferenceEquals(o1, o3)}");
+
+    o2.PrintSummary();
+
+    /* The main different between Value & Ref type is how they are store and hold data.
+    * 1- Value Type is Store in The Stack While ref type in Heap.
+    * 2- When we assing value type to another variable, a copy of the value is created,
+    * while when we assign reference type to another variable, the both variable holds the same address
+    * of the object so the both refer to the same object in the memory, that what is occur when we assign o1 to o2.
+    * 3- When we assingn o1 to BoxOrder (object), the BoxOrder will refer to the same object beacuse there is no new
+    * copy created and BoxOrder already have the same reference after assingment.
+    */
   }
 
   // ============ Part B ====================//
