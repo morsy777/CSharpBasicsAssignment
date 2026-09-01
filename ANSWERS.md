@@ -56,3 +56,6 @@ Why does C# have no true global variables, and what's the closest equivalent?
 **Answer:**  
 C# doesn't have global variable but we can use static variable in a static class to achieve the same effect.
 
+
+
+
