@@ -1,22 +1,25 @@
 ﻿// ============ Part A ====================//
-
+#region Part A 
 // .csproj is the file that contain project configs like .net version, packages and dependencies.
 // Program.cs is the entry point of our application.
 // obj/ is the dir that conain the compiled output and cached the last build.
 // bin/ when we build our project, the IL code is stored in that dir specifically in .dll file or in other word called assembly file.
 
-namespace CSharpBasicsAssignment;
-
 // File-scoped namespace removes the need for a namespace block,
 // so the code inside the namespace doesn't need an extra indentation level.
 
 // My project use .sln but .slnx is better in solving git conflicts, also readable and simpler than .sln .
+#endregion
 
+namespace CSharpBasicsAssignment;
 
 class Program
 {
+  private string _socialNumber = "303030303030";
   static void Main()
   {
+    // ======== Part C ==========//
+    #region Part C
     Order o1 = new Order
     {
       OrderId = 1,
@@ -54,10 +57,15 @@ class Program
     * 3- When we assingn o1 to BoxOrder (object), the BoxOrder will refer to the same object beacuse there is no new
     * copy created and BoxOrder already have the same reference after assingment.
     */
+    #endregion
+
+  TryBitwiseOperators();
+
   }
 
-  // ============ Part B ====================//
-  static void RunTypesDemo()
+  // ======== Part B ==========//
+  #region Part B
+    static void RunTypesDemo()
   {
     // 1.
     int num = 10;
@@ -152,16 +160,75 @@ class Program
     //  to another variable, a copy of the value is created
     //  and the both variable are completely independent.
     Console.WriteLine($"P1.X = {p1.X} || P2.X = {p2.X}");
-
-
-
-
-
-
-
-
-
   }
+
+  #endregion
+
+  // ======== Part D ==========//
+  #region Part D
+  // D1
+  void TryReadPrivatVarAndLocal()
+  {
+    // _socialNumber is accessible inside this class at any function
+    // but invisible outside this class.
+    Console.WriteLine(_socialNumber);
+
+    string me = "Morsi";
+  }
+
+  // Compile Error at (me) because there is no variable called me outside the scope of
+  // its function, because the me varibale is already poped from the stack.
+  // Console.WriteLine(me);
+
+  void TestLoopScope()
+  {
+    for (int i = 0; i < 2; i++)
+    {
+      string name = $"User {i}";
+      Console.WriteLine(name);
+    }
+
+    // Compile Error because the i and name is block scope and already poped from the stack after loop implementation.
+    // Console.WriteLine(i);
+    // Console.WriteLine(name);
+  }
+
+  // D2
+  void TryOperators()
+  {
+    int total = 100;
+
+    // total += 10; is equivalent to, total = total + 10
+    total += 10;
+    Console.WriteLine(total);
+
+    total -= 20;
+    Console.WriteLine(total);
+
+    total *= 2;
+    Console.WriteLine(total);
+
+    total /= 5;
+    Console.WriteLine(total);
+
+    total %= 7;
+    Console.WriteLine(total);
+  }
+
+  // D3
+  static void TryBitwiseOperators()
+  {
+    int a = 10; // 1010
+    int b = 7; // 0111
+
+    // if both are 1 the result is 1 else is 0
+    Console.WriteLine(a & b);
+    // if at least one is 1 the both is 1 else is 0
+    Console.WriteLine(a | b);
+    // if the both are different(0^1) the result is 1
+    Console.WriteLine(a ^ b);
+  }
+  #endregion
 
 
 
